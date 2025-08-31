@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #4CAF50;
+            padding: 10px 20px;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            color: white;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background: #4CAF50;
+            color: white;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .hero-content h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+        .btn {
+            background: #fff;
+            color: #4CAF50;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background: #45a049;
+            color: white;
+        }
+
+        /* About, Plans, Testimonials Section Styles */
+        .about, .plans, .testimonials, .contact {
+            padding: 20px;
+            margin: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .about h2, .plans h2, .testimonials h2, .contact h2 {
+            color: #4CAF50;
+        }
+
+        /* Plans Section Styles */
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .plan {
+            background: #f2f2f2;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* Testimonials Section Styles */
+        .testimonials .testimonial {
+            background-color: #f2f2f2;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        /* Contact Section Styles */
+        .contact h2 {
+            font-size: 28px;
+        }
+        .contact p {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+        }
+        .contact p:nth-child(2), .contact p:nth-child(3) {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #333;
+            color: white;
+        }
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">PBS Gym</div>
+        <ul class="nav-links">
+            <li><a href="/home">Home</a></li>  <!-- Link to the Home page -->
+            <li><a href="/membership">Memberships</a></li> <!-- Link to the Membership page -->
+            <li><a href="/trainers">Trainers</a></li> <!-- Link to the Trainers page -->
+            <li><a href="#" onclick="logout()">Logout</a></li> <!-- Logout functionality -->
+        </ul>
+    </nav>
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Our Gym</h1>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <h2>About Our Gym</h2>
+        <p>We are committed to helping you achieve your fitness goals with personalized plans, state-of-the-art equipment, and expert trainers.</p>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Members Say</h2>
+        <div class="testimonial">
+            <p>"The trainers here are amazing, and I’ve seen great results!"</p>
+            <h4>- John Shrestha</h4>
+        </div>
+        <div class="testimonial">
+            <p>"Joining this gym was the best decision I ever made for my health."</p>
+            <h4>- Puskar Thapa</h4>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, feel free to reach out!</p>
+        <p>Email: pbsgym12@gmail.com</p>
+        <p>Phone:9800000000</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 PBS Gym. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">Twitter</a>
+        </div>
+        <p>Contact us: info@gymname.com | Phone: (123) 456-7890</p>
+    </footer>
+
+    <script>
+        function logout() {
+            window.location.href = "/perform_logout"; // Correct logout URL
+        }
+    </script>
+
+</body>
+</html>
