@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gym Management System</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1>PBS Gym</h1>
+        </div>
+        <div class="nav-right">
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1>Login Form</h1>
+        <form action="/login" method="post"> <!-- Set action to /login and method to post -->
+            <!-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> CSRF Token -->
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="username" required><br><br> <!-- Changed 'name' to 'username' -->
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <input type="submit" value="Login">
+            <a href="/users" class="existing-users-link">See Existing Users</a>
+        </form>
+
+        <!-- Optional: Display error message if login fails -->
+        <div th:if="${param.error}">
+            <p style="color:red;">Invalid email or password.</p>
+        </div>
+
+        <!-- Optional: Display message if user logged out -->
+        <div th:if="${param.logout}">
+            <p style="color:green;">You have been logged out successfully.</p>
+        </div>
+    </div>
+</body>
+</html>

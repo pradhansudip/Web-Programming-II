@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- Add the Thymeleaf namespace -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Error Message Pop-Up for Password Validation */
+        .error-message {
+            position: relative;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #f5c6cb;
+            font-size: 14px;
+            margin-top: 10px;
+            z-index: 100;
+            display: none; /* Hidden by default */
+        }
+
+        .error-message:before {
+            content: "⚠ "; /* Warning symbol */
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-left">
+            <h1>PBS Gym</h1>
+        </div>
+        <div class="nav-right">
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </div>
+    </nav>
+
+    <!-- Content Area -->
+    <div class="content">
+        <h2>Registration Form</h2>
+        <form id="registrationForm" onsubmit="return validateForm()" action="/register" method="post" th:action="@{/register}">
+            <!-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> CSRF Token -->
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <input type="submit" value="Register">
+        </form>
+
+        <!-- Error message for password validation -->
+        <div id="errorMessage" class="error-message">
+            Your password is too weak. Please use a strong password.
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const errorMessage = document.getElementById("errorMessage");
+
+            // Password validation: at least 8 characters, 1 uppercase letter, 1 number
+            const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+            console.log("Validating passwords..."); // Debug log
+
+            // If password doesn't match the strength criteria
+            if (!password.match(passwordRegex)) {
+                errorMessage.style.display = "block"; // Show error message
+                errorMessage.innerText = "Your password is too weak. It must be at least 8 characters long, contain 1 uppercase letter and 1 number.";
+                return false; // Prevent form submission
+            }
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                errorMessage.style.display = "block"; // Show error message
+                errorMessage.innerText = "Passwords do not match.";
+                return false; // Prevent form submission
+            }
+
+            // If everything is valid, hide the error message and allow submission
+            errorMessage.style.display = "none";
+            console.log("Validation passed, submitting form."); // Debug log
+            return true; // Proceed with form submission
+        }
+    </script>
+</body>
+</html>
